@@ -1,0 +1,169 @@
+{
+	"id": "95675158-3556-9737-b3e0-38824dfdc0f3",
+	"name": "Enterprise-security",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "oauth2-external-provider",
+			"description": "",
+			"collectionId": "95675158-3556-9737-b3e0-38824dfdc0f3",
+			"order": [
+				"c128c959-b399-43c3-b376-4eacd2988d4c",
+				"0041a01b-64b9-6312-df4a-57c623d17611",
+				"87f8a77d-5239-efa8-86d1-51b668c48399"
+			],
+			"owner": "2128089",
+			"folders_order": [],
+			"id": "368a8484-8752-9694-9c15-358c124b4766"
+		}
+	],
+	"folders_order": [
+		"368a8484-8752-9694-9c15-358c124b4766"
+	],
+	"timestamp": 1534170845767,
+	"owner": "2128089",
+	"public": false,
+	"requests": [
+		{
+			"id": "0041a01b-64b9-6312-df4a-57c623d17611",
+			"headers": "//grant_type: client_credentials\n//client_id: f4947aa7be8e4417bf87d0031ab5e25c\n//client_secret: 3A574cff594745a4a8467F333cbe8Ec0\naccess_token: B8PbvYoeb3PCyvRyxqszSI1Rz49czOpGQ8UlKl9nPROjiTbR-tqIR4OlGeLcP2szlz5haQ-qvSEu1VbE5ek7tQ\n",
+			"headerData": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "client_id",
+					"value": "f4947aa7be8e4417bf87d0031ab5e25c",
+					"description": "TCS1",
+					"enabled": false
+				},
+				{
+					"key": "client_secret",
+					"value": "3A574cff594745a4a8467F333cbe8Ec0",
+					"description": "TCS1",
+					"enabled": false
+				},
+				{
+					"key": "access_token",
+					"value": "B8PbvYoeb3PCyvRyxqszSI1Rz49czOpGQ8UlKl9nPROjiTbR-tqIR4OlGeLcP2szlz5haQ-qvSEu1VbE5ek7tQ",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8089/oauth/validate",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534170817037,
+			"name": "tokenValidate",
+			"description": null,
+			"collectionId": "95675158-3556-9737-b3e0-38824dfdc0f3",
+			"responses": [],
+			"collection_id": "95675158-3556-9737-b3e0-38824dfdc0f3",
+			"folder": "368a8484-8752-9694-9c15-358c124b4766"
+		},
+		{
+			"id": "87f8a77d-5239-efa8-86d1-51b668c48399",
+			"headers": "//grant_type: client_credentials\n//client_id: f4947aa7be8e4417bf87d0031ab5e25c\n//client_secret: 3A574cff594745a4a8467F333cbe8Ec0\naccess_token: E3jPHRb4ulaGviT7eHSke9viwnZsyi5aszlp4uj6DCeVKA7bn-e-rEkMKiLcKwYHwRyXSxw93hQFsLz6NacR8g\n",
+			"headerData": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "client_id",
+					"value": "f4947aa7be8e4417bf87d0031ab5e25c",
+					"description": "TCS1",
+					"enabled": false
+				},
+				{
+					"key": "client_secret",
+					"value": "3A574cff594745a4a8467F333cbe8Ec0",
+					"description": "TCS1",
+					"enabled": false
+				},
+				{
+					"key": "access_token",
+					"value": "E3jPHRb4ulaGviT7eHSke9viwnZsyi5aszlp4uj6DCeVKA7bn-e-rEkMKiLcKwYHwRyXSxw93hQFsLz6NacR8g",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8089/oauth/delete",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534164943871,
+			"name": "tokenDelete",
+			"description": null,
+			"collectionId": "95675158-3556-9737-b3e0-38824dfdc0f3",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "d7d4fb25-506a-7243-4787-d6a2da7c9b5e",
+			"collection_id": "95675158-3556-9737-b3e0-38824dfdc0f3",
+			"folder": "368a8484-8752-9694-9c15-358c124b4766"
+		},
+		{
+			"id": "c128c959-b399-43c3-b376-4eacd2988d4c",
+			"headers": "grant_type: client_credentials\nclient_id: \nclient_secret: \n",
+			"headerData": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_id",
+					"value": "",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_secret",
+					"value": "",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8089/oauth/token",
+			"folder": "368a8484-8752-9694-9c15-358c124b4766",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534170917388,
+			"name": "getAccessToken",
+			"description": "",
+			"collectionId": "95675158-3556-9737-b3e0-38824dfdc0f3",
+			"responses": []
+		}
+	]
+}

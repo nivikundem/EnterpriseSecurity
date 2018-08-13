@@ -15,7 +15,6 @@ http://www.mulesoft.org/schema/mule/oauth2-provider http://www.mulesoft.org/sche
     </flow>
     <flow name="get:/delete:oauth2-config">
         <oauth2-provider:revoke-token config-ref="OAuth_provider_module" token="#[message.inboundProperties.'access_token']" doc:name="OAuth provider module to delete token"/>
-        <set-payload value="#[NullPayload.getInstance()]" doc:name="Set Payload" />
     </flow>
    
     <flow name="get:/token:oauth2-config">

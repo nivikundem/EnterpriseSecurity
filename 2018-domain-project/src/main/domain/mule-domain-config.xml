@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain:mule-domain
+        xmlns="http://www.mulesoft.org/schema/mule/core"
+        xmlns:http="http://www.mulesoft.org/schema/mule/http"
+        xmlns:domain="http://www.mulesoft.org/schema/mule/ee/domain"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:spring="http://www.springframework.org/schema/beans"
+        xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+               http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+               http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+               http://www.mulesoft.org/schema/mule/ee/domain http://www.mulesoft.org/schema/mule/ee/domain/current/mule-domain-ee.xsd
+               http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+               http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+               ">
+
+    <!-- configure here resource to be shared within the domain -->
+    <context:property-placeholder location="domain-config-${env}.properties" />
+    <http:listener-config  name="token-gen-validation-api-httpListenerConfig" host="${tokengen.host}" port="${tokengen.port}" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config  name="oauth-api-http-lc-8089" host="${oauth.host}" port="${oauth.port}" doc:name="HTTP Listener Configuration"/>
+   
+
+
+
+
+
+
+</domain:mule-domain>
