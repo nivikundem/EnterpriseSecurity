@@ -1,0 +1,48 @@
+#%RAML 1.0
+title: oauth2-client-token-access-validate
+version: 1.0
+
+
+/token: 
+  get:        
+    description: Genrates the access token for the given client    
+    headers:
+      client_id:
+      client_secret:
+      grant_type:
+ 
+    responses: 
+      200:
+        body:        
+          application/json:
+            example: |
+              {
+                  "access_token": "ie02L2TFS43IeBaJNKUPlczOv6yvMdSvhJyEvgmzZ_bLyY2Kx4JqrtaBdBGhIQ70enpWaqcW2cE4_u2EtKUB9w",
+                  "token_type": "bearer",
+                  "expires_in": 86399
+              }
+
+
+/delete:
+  get:
+    description: Deletes the access token from the store
+    headers: 
+      access_token: string
+    responses:
+      200:        
+      
+/validate:
+  get:    
+    description: Token validation
+    headers:
+      access_token:
+    responses:
+      200:
+        body:
+         application/json:
+            example: |
+              {
+                  "expires_in": 86383,
+                  "scope": "",
+                  "client_id": "f4947aa7be8e4417bf87d0031ab5e25c"
+              } 
