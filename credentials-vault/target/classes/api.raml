@@ -1,0 +1,43 @@
+#%RAML 0.8
+title: WEATHER API
+version: 1.0
+
+baseUri: https://mocksvc.mulesoft.com/mocks/1b6163e6-996b-43cb-9990-fce8079646b1/api
+
+
+/WByCityName:
+  displayName: ByCityName   
+  get:
+    queryParameters:
+      cityName:
+        description: CityName  
+        type: string
+        example: London
+        required: true
+    description: Gets the weather details for the city
+    responses:
+          200:
+            body:
+              application/json:
+                example: |
+                   {
+                      "coord": {
+                      "lon": -0.13,
+                      "lat": 51.51
+                        },
+                      "main": {
+                      "temp": 290.24,
+                      "pressure": 1016,
+                      "humidity": 77,
+                      "temp_min": 288.15,
+                      "temp_max": 292.15
+                           },
+                      "id": 2643743,
+                       "name": "London",
+                        "cod": 200
+                     }
+          400:
+            body:
+              application/json:
+                example: |
+                  {"error":"Not found"}
