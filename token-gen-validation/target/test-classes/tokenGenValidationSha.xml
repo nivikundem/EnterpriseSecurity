@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+    <sub-flow name="tokengenvalidationShaSubFlow">
+        <flow-ref name="getEncryptionKeyValueSubFlow" doc:name="getEncryptionKeyValueSubFlow"/>
+    
+        <set-variable variableName="inputToken" value="#[flowVars.uniqueId]:#[flowVars.uniqueRef]:#[flowVars.encryptionKeyValue]" doc:name="inputToken"/>
+        
+         <set-variable variableName="sha256Token" value="#[com.google.common.hash.Hashing.sha256().hashBytes(flowVars['inputToken'].getBytes(&quot;UTF-8&quot;)).toString()]" doc:name="sha256Token"/>
+        <set-payload value="#[flowVars.sha256Token]" doc:name="Set Payload"/>
+        
+    </sub-flow>
+    <sub-flow name="checkTokenSubFlow">
+        <flow-ref name="getEncryptionKeyValueSubFlow" doc:name="getEncryptionKeyValueSubFlow"/>
+        <set-variable variableName="token" value="#[message.inboundProperties.token]" doc:name="token"/>
+        <set-variable variableName="tokenInput" value="#[flowVars.uniqueId]:#[flowVars.uniqueRef]:#[flowVars.encryptionKeyValue]" doc:name="tokenInput"/>
+        <set-variable variableName="sha256Token" value="#[com.google.common.hash.Hashing.sha256().hashBytes(flowVars['tokenInput'].getBytes(&quot;UTF-8&quot;)).toString()]" doc:name="sha256Token"/>
+        <choice doc:name="Choice">
+            <when expression="#[flowVars.sha256Token == flowVars.token]">
+                <dw:transform-message doc:name="Create Success Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/json encoding="UTF-8",skipNullOn="everyWhere"
+---
+{
+	tokenInfo :{
+		tokenSource:"tokenGenAndValidationSHA",
+		uniqueId:flowVars.uniqueId,
+		uniqueRef:flowVars.uniqueRef,
+		token:flowVars.token,
+		valid:true,
+		dateTime: now as :string {format :"yyyy-MM-dd'T'HH:mm:ssZ"}
+		
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+            </when>
+            <otherwise>
+                <dw:transform-message doc:name="Create Error Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/json encoding="UTF-8",skipNullOn="everyWhere"
+---
+{
+	error :{
+		errorSource:"tokenGenAndValidationSHA",
+		errorCode:"Invalid Token",
+		errorDate:now as :string {format :"yyyy-MM-dd'T'HH:mm:ssZ"},
+		errorMessage:"Invalid Token",
+		errorDescription:"Invalid Token"
+		
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+            </otherwise>
+        </choice>
+    </sub-flow>
+    
+</mule>

@@ -1,0 +1,134 @@
+#%RAML 1.0
+title: token gen validation API
+version: 1.0
+  
+baseUri: https://mocksvc.mulesoft.com/mocks/d13c8106-6725-4e29-bae8-66b5c44f1a67/api # baseUri: https://mocksvc.mulesoft.com/mocks/1b6163e6-996b-43cb-9990-fce8079646b1/api
+
+
+/generateToken:
+      displayName: generateToken
+
+      get:      
+
+        queryParameters:
+
+          uniqueId:
+            description: uniqueId  
+            type: string         
+            example: uniqueId1
+            required: true            
+          uniqueRef:
+            description: uniqueRef  
+            type: string         
+            example: uniqueRef1
+            required: true            
+            
+ 
+            
+        description: Gets the token
+        responses:
+              200:
+                body:
+                  application/json:
+                    example: |
+                       {
+                          "token": "fdcc60aabcbd838a8b1812e77f3e387e3997e739b50a8e6e1434f69a6da89b17"
+                         }       
+/validateToken:
+  displayName: Validate Token   
+  get:
+    headers:
+      token:
+       required: true
+    queryParameters:
+      uniqueId:
+        description: Unique Id  
+        type: string
+        example: uniqueid1
+        required: true
+      uniqueRef:
+        description: Unique Ref  
+        type: string
+        example: uniqueRef1
+        required: true
+    description: Validate token is validate for the combination of uniqueId and uniqueRef
+    responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                      "tokenInfo": {
+                          "tokenSource": "tokenGenAndValidation",
+                          "uniqueId": "uniqueid1",
+                          "uniqueRef": "uniqueRef1",
+                          "token": "uezeKqQ5szYK9z6dwDGf2oVLbjwiDDCW+eyK7LrGMD/5jamUXptGgYhMcE4cU8bl",
+                          "valid": true,
+                          "dateTime": "2018-08-16T12:17:58+0100"
+                      }
+                  }                     
+                         
+                         
+/getToken:
+      displayName: getToken
+
+      get:
+      
+
+        queryParameters:
+
+          uniqueId:
+            description: uniqueId  
+            type: string         
+            example: uniqueId1
+            required: true            
+          uniqueRef:
+            description: uniqueRef  
+            type: string         
+            example: uniqueRef1
+            required: true            
+            
+ 
+            
+        description: Gets the token
+        responses:
+              200:
+                body:
+                  application/json:
+                    example: |
+                       {
+                          "token": "fdcc60aabcbd838a8b1812e77f3e387e3997e739b50a8e6e1434f69a6da89b17"
+                         }
+/checkToken:
+  displayName: Validate Token   
+  get:
+    headers:
+      token:
+       required: true
+    queryParameters:
+      uniqueId:
+        description: Unique Id  
+        type: string
+        example: uniqueid1
+        required: true
+      uniqueRef:
+        description: Unique Ref  
+        type: string
+        example: uniqueRef1
+        required: true
+    description: Validate token is validate for the combination of uniqueId and uniqueRef
+    responses:
+          200:
+            body:
+              application/json:
+                example: |
+                  {
+                      "tokenInfo": {
+                          "tokenSource": "tokenGenAndValidationSHA",
+                          "uniqueId": "uniqueid1",
+                          "uniqueRef": "uniqueRef1",
+                          "token": "7ec5c4b6ffd6951d5a5eb6474e35277f7b25e98ef53d35fd5da542e0dddf5a93",
+                          "valid": true,
+                          "dateTime": "2018-08-16T11:56:19+0100"
+                      }
+                  }                            

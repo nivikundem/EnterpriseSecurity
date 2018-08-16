@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns:encryption="http://www.mulesoft.org/schema/mule/encryption" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/encryption http://www.mulesoft.org/schema/mule/encryption/current/mule-encryption.xsd">
+    
+  
+    <sub-flow name="generateTokenSubFlow">
+        <flow-ref name="getEncryptionKeyValueSubFlow" doc:name="getEncryptionKeyValueSubFlow"/>        
+        <set-variable variableName="inputToken" value="#[flowVars.uniqueId]:#[flowVars.uniqueRef]:#[flowVars.encryptionKeyValue]" doc:name="inputToken"/>           
+        <encryption:encrypt config-ref="Encryption" using="JCE_ENCRYPTER" doc:name="Encryption" input-ref="#[flowVars.inputToken]">
+            <encryption:jce-encrypter key="#[flowVars.encryptionKeyValue]" algorithm="AES" encryptionMode="CBC"/>
+        </encryption:encrypt>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+    "token": payload
+}]]></dw:set-payload>
+        </dw:transform-message>           
+    </sub-flow>
+        
+    
+     <sub-flow name="validateTokenSubFlow">
+        <flow-ref name="getEncryptionKeyValueSubFlow" doc:name="getEncryptionKeyValueSubFlow"/>
+        <set-variable variableName="token" value="#[message.inboundProperties.token]" doc:name="token"/>
+        <set-variable variableName="inputToken" value="#[flowVars.uniqueId]:#[flowVars.uniqueRef]:#[flowVars.encryptionKeyValue]" doc:name="tokenInput"/>
+                        
+        <encryption:encrypt config-ref="Encryption" using="JCE_ENCRYPTER" doc:name="Encryption" input-ref="#[flowVars.inputToken]">
+            <encryption:jce-encrypter key="#[flowVars.encryptionKeyValue]" algorithm="AES" encryptionMode="CBC"/>
+        </encryption:encrypt>  
+         <set-variable variableName="tokenToCompare" value="#[payload]" doc:name="tokenToCompare"/>
+       
+        <choice doc:name="validChoice">
+            <when expression="#[flowVars.tokenToCompare == flowVars.token]">
+                <dw:transform-message doc:name="Create Success Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/json encoding="UTF-8",skipNullOn="everyWhere"
+---
+{
+	tokenInfo :{
+		tokenSource:"tokenGenAndValidation",
+		uniqueId:flowVars.uniqueId,
+		uniqueRef:flowVars.uniqueRef,
+		token:flowVars.token,
+		valid:true,
+		dateTime: now as :string {format :"yyyy-MM-dd'T'HH:mm:ssZ"}
+		
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+            </when>
+            <otherwise>
+                <dw:transform-message doc:name="Create Error Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/json encoding="UTF-8",skipNullOn="everyWhere"
+---
+{
+	error :{
+		errorSource:"tokenGenAndValidation",
+		errorCode:"Invalid Token",
+		errorDate:now as :string {format :"yyyy-MM-dd'T'HH:mm:ssZ"},
+		errorMessage:"Invalid Token",
+		errorDescription:"Invalid Token"
+		
+	}
+}]]></dw:set-payload>
+                </dw:transform-message>
+            </otherwise>
+        </choice>
+    </sub-flow>
+    
+</mule>

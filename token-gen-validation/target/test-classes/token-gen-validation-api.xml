@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+    <flow name="token-gen-validation-api-main">
+        <http:listener config-ref="token-gen-validation-api-lc-8090" path="/api/*" doc:name="HTTP"/>
+        <apikit:router config-ref="token-gen-validation-api-config" doc:name="APIkit Router"/>
+        <exception-strategy ref="token-gen-validation-api-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="token-gen-validation-api-console">
+        <http:listener config-ref="token-gen-validation-api-lc-8090" path="/console/*" doc:name="HTTP"/>
+        <apikit:console config-ref="token-gen-validation-api-config" doc:name="APIkit Console"/>
+    </flow>
+    <flow name="get:/generateToken:token-gen-validation-api-config">
+        <flow-ref name="generateTokenSubFlow" doc:name="generateTokenSubFlow"/>
+        <!-- <set-payload value="{
+   &quot;token&quot;: &quot;fdcc60aabcbd838a8b1812e77f3e387e3997e739b50a8e6e1434f69a6da89b17&quot;
+  }" doc:name="Set Payload"/> -->
+    </flow>
+
+    <flow name="get:/validateToken:token-gen-validation-api-config">
+        <flow-ref name="validateTokenSubFlow" doc:name="validateTokenSubFlow"/>
+        <!-- <set-payload value="{&#xA;    &quot;tokenInfo&quot;: {&#xA;        &quot;tokenSource&quot;: &quot;tokenGenAndValidation&quot;,&#xA;        &quot;uniqueId&quot;: &quot;uniqueid1&quot;,&#xA;        &quot;uniqueRef&quot;: &quot;uniqueRef1&quot;,&#xA;        &quot;token&quot;: &quot;uezeKqQ5szYK9z6dwDGf2oVLbjwiDDCW+eyK7LrGMD/5jamUXptGgYhMcE4cU8bl&quot;,&#xA;        &quot;valid&quot;: true,&#xA;        &quot;dateTime&quot;: &quot;2018-08-16T12:17:58+0100&quot;&#xA;    }&#xA;}" doc:name="Set Payload"/> -->
+    </flow>
+
+    <flow name="get:/getToken:token-gen-validation-api-config">
+        <flow-ref name="tokengenvalidationShaSubFlow" doc:name="tokengenvalidationShaSubFlow"/>
+       <!--  <set-payload value="{&#xA;   &quot;token&quot;: &quot;fdcc60aabcbd838a8b1812e77f3e387e3997e739b50a8e6e1434f69a6da89b17&quot;&#xA;  }" doc:name="Set Payload"/> -->
+    </flow>
+    <flow name="get:/checkToken:token-gen-validation-api-config">
+        <flow-ref name="checkTokenSubFlow" doc:name="checkTokenSubFlow"/>
+       <!--  <set-payload value="{
+    &quot;tokenInfo&quot;: {
+        &quot;tokenSource&quot;: &quot;tokenGenAndValidationSHA&quot;,
+        &quot;uniqueId&quot;: &quot;uniqueid1&quot;,
+        &quot;uniqueRef&quot;: &quot;uniqueRef1&quot;,
+        &quot;token&quot;: &quot;7ec5c4b6ffd6951d5a5eb6474e35277f7b25e98ef53d35fd5da542e0dddf5a93&quot;,
+        &quot;valid&quot;: true,
+        &quot;dateTime&quot;: &quot;2018-08-16T11:56:19+0100&quot;
+    }
+}" doc:name="Set Payload"/> -->
+    </flow>
+   
+</mule>

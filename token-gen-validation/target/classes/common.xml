@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.9.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+
+  <sub-flow name="getEncryptionKeyValueSubFlow">
+    
+        <set-variable variableName="uniqueId" value="#[message.inboundProperties.'http.query.params'.uniqueId]" doc:name="uniqueId"/>
+        <set-variable variableName="uniqueRef" value="#[message.inboundProperties.'http.query.params'.uniqueRef]" doc:name="uniqueRef"/>
+    	<set-variable variableName="encryptionKeyName" value="#[flowVars.uniqueId].key" doc:name="encryptionKeyName"/>
+    	<set-variable variableName="encryptionKeyValue" value="#[dw('p(flowVars.encryptionKeyName)')]" doc:name="encryptionKeyValue"/>
+    
+    </sub-flow>
+
+
+</mule>
