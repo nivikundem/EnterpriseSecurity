@@ -17,11 +17,11 @@
 
     <!-- configure here resource to be shared within the domain -->
     <context:property-placeholder location="domain-config-${env}.properties" />
-    <http:listener-config  name="token-gen-validation-api-httpListenerConfig" host="${tokengen.host}" port="${tokengen.port}" doc:name="HTTP Listener Configuration"/>
+   
     <http:listener-config  name="oauth-api-http-lc-8089" host="${oauth.host}" port="${oauth.port}" doc:name="HTTP Listener Configuration"/>
+    <http:listener-config  name="token-gen-validation-api-lc-8090" host="${tokengen.host}" port="${tokengen.port}" doc:name="HTTP Listener Configuration"/>
     <http:listener-config  name="credentials-vault-api-http-lc-8091" host="${credentials.vault.host}" port="${credentials.vault.port}" doc:name="HTTP Listener Configuration"/>
    
-
 
 
 
