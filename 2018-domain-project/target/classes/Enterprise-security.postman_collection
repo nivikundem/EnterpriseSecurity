@@ -1,0 +1,574 @@
+{
+	"id": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+	"name": "Github2018",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"name": "crc32-processor",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"order": [
+				"f36a915f-97d3-ab7c-f853-6dac8704b87a",
+				"b71e1277-8f99-fedc-5955-b77f78740a34"
+			],
+			"owner": "2128089",
+			"folders_order": [],
+			"id": "1289f044-ea5b-1933-6852-5e9f297d6742"
+		},
+		{
+			"name": "credentials-vault-api",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"order": [
+				"13f9b644-3844-e61e-7510-b4cca32f8dd7"
+			],
+			"owner": "2128089",
+			"folders_order": [],
+			"id": "04f8549d-5c13-2d1c-ec30-144f91b42d2f"
+		},
+		{
+			"name": "filter-processor",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"order": [
+				"d77b5fe1-476a-5865-63af-fd8b60aa5952"
+			],
+			"owner": "2128089",
+			"folders_order": [],
+			"id": "4fce9ff7-7d6d-fd43-cf88-bc57e7f8f257"
+		},
+		{
+			"name": "oauth2-external-provider",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"order": [
+				"123b3cd5-1701-12a9-6530-1ba229b1a365",
+				"6d6a2fe3-543a-e8ba-72e3-416c308e5ded",
+				"d7d4fb25-506a-7243-4787-d6a2da7c9b5e",
+				"ee92a662-2133-4b69-5f70-07c71a04ea66"
+			],
+			"owner": "2128089",
+			"folders_order": [],
+			"id": "a3f4661c-7889-0783-ab44-83ce98f63123"
+		},
+		{
+			"name": "token-gen-validation-api",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"order": [
+				"3f27ebf5-e0da-218e-2cf3-ba912124c53e",
+				"23d09cad-8359-eda6-25d2-e88850d3b94c",
+				"a0981045-71a4-b15e-b200-9ccdbb366f35",
+				"d2236bcb-2b74-b078-22fa-47ba0c84f7eb"
+			],
+			"owner": "2128089",
+			"folders_order": [],
+			"id": "748f8a2e-c61a-2d29-459e-16080b5f48ee"
+		}
+	],
+	"folders_order": [
+		"748f8a2e-c61a-2d29-459e-16080b5f48ee",
+		"a3f4661c-7889-0783-ab44-83ce98f63123",
+		"04f8549d-5c13-2d1c-ec30-144f91b42d2f",
+		"4fce9ff7-7d6d-fd43-cf88-bc57e7f8f257",
+		"1289f044-ea5b-1933-6852-5e9f297d6742"
+	],
+	"timestamp": 1530949631188,
+	"owner": "2128089",
+	"public": false,
+	"requests": [
+		{
+			"id": "123b3cd5-1701-12a9-6530-1ba229b1a365",
+			"headers": "grant_type: client_credentials\nclient_id: f4947aa7be8e4417bf87d0031ab5e25c\nclient_secret: 3A574cff594745a4a8467F333cbe8Ec0\n",
+			"headerData": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_id",
+					"value": "f4947aa7be8e4417bf87d0031ab5e25c",
+					"description": "TCS1",
+					"enabled": true
+				},
+				{
+					"key": "client_secret",
+					"value": "3A574cff594745a4a8467F333cbe8Ec0",
+					"description": "TCS1",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8089/oauth/token",
+			"folder": "748f8a2e-c61a-2d29-459e-16080b5f48ee",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534162768029,
+			"name": "getAccessToken",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": []
+		},
+		{
+			"id": "13f9b644-3844-e61e-7510-b4cca32f8dd7",
+			"headers": "",
+			"headerData": [],
+			"url": "http://127.0.0.1:8091/vault/credentials",
+			"folder": "04f8549d-5c13-2d1c-ec30-144f91b42d2f",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534334256685,
+			"name": "getCredentials",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": []
+		},
+		{
+			"id": "23d09cad-8359-eda6-25d2-e88850d3b94c",
+			"headers": "token: uezeKqQ5szYK9z6dwDGf2oVLbjwiDDCW+eyK7LrGMD/5jamUXptGgYhMcE4cU8bl\n//token: 1111\n",
+			"headerData": [
+				{
+					"key": "token",
+					"value": "uezeKqQ5szYK9z6dwDGf2oVLbjwiDDCW+eyK7LrGMD/5jamUXptGgYhMcE4cU8bl",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "1111",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://127.0.0.1:8090/api/validateToken?uniqueId=uniqueid1&uniqueRef=uniqueRef1",
+			"folder": "748f8a2e-c61a-2d29-459e-16080b5f48ee",
+			"queryParams": [
+				{
+					"key": "uniqueId",
+					"value": "uniqueid1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "uniqueRef",
+					"value": "uniqueRef1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534428969444,
+			"name": "validateToken",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": []
+		},
+		{
+			"id": "3f27ebf5-e0da-218e-2cf3-ba912124c53e",
+			"headers": "",
+			"headerData": [],
+			"url": "http://127.0.0.1:8090/api/generateToken?uniqueId=uniqueid1&uniqueRef=uniqueRef1",
+			"folder": "748f8a2e-c61a-2d29-459e-16080b5f48ee",
+			"queryParams": [
+				{
+					"key": "uniqueId",
+					"value": "uniqueid1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "uniqueRef",
+					"value": "uniqueRef1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534429689080,
+			"name": "GenerateToken",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": []
+		},
+		{
+			"id": "6d6a2fe3-543a-e8ba-72e3-416c308e5ded",
+			"headers": "//grant_type: client_credentials\n//client_id: f4947aa7be8e4417bf87d0031ab5e25c\n//client_secret: 3A574cff594745a4a8467F333cbe8Ec0\naccess_token: B8PbvYoeb3PCyvRyxqszSI1Rz49czOpGQ8UlKl9nPROjiTbR-tqIR4OlGeLcP2szlz5haQ-qvSEu1VbE5ek7tQ\n",
+			"headerData": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "client_id",
+					"value": "f4947aa7be8e4417bf87d0031ab5e25c",
+					"description": "TCS1",
+					"enabled": false
+				},
+				{
+					"key": "client_secret",
+					"value": "3A574cff594745a4a8467F333cbe8Ec0",
+					"description": "TCS1",
+					"enabled": false
+				},
+				{
+					"key": "access_token",
+					"value": "B8PbvYoeb3PCyvRyxqszSI1Rz49czOpGQ8UlKl9nPROjiTbR-tqIR4OlGeLcP2szlz5haQ-qvSEu1VbE5ek7tQ",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8089/oauth/validate",
+			"folder": "a3f4661c-7889-0783-ab44-83ce98f63123",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534170817037,
+			"name": "tokenValidate",
+			"description": null,
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": []
+		},
+		{
+			"id": "a0981045-71a4-b15e-b200-9ccdbb366f35",
+			"headers": "",
+			"headerData": [],
+			"url": "http://127.0.0.1:8090/api/getToken?uniqueId=uniqueid1&uniqueRef=uniqueRef1",
+			"folder": "748f8a2e-c61a-2d29-459e-16080b5f48ee",
+			"queryParams": [
+				{
+					"key": "uniqueId",
+					"value": "uniqueid1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "uniqueRef",
+					"value": "uniqueRef1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534429677431,
+			"name": "getToken",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": []
+		},
+		{
+			"id": "b71e1277-8f99-fedc-5955-b77f78740a34",
+			"headers": "//cr32Token: KajqwgHrpaAzwHjz\n//cr32Token: AAA\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "cr32Token",
+					"value": "KajqwgHrpaAzwHjz",
+					"description": "Good",
+					"enabled": false
+				},
+				{
+					"key": "cr32Token",
+					"value": "AAA",
+					"description": "Bad",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8092/api/crc32-and-filter-processor-api/v1/crc32-payload-change",
+			"folder": "1289f044-ea5b-1933-6852-5e9f297d6742",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535622591128,
+			"name": "crc32-payload-change",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": [],
+			"rawModeData": "{\n  \"createdAt\":\"2018-08-16T16:25:53Z\"\n}"
+		},
+		{
+			"id": "d2236bcb-2b74-b078-22fa-47ba0c84f7eb",
+			"headers": "token: 7ec5c4b6ffd6951d5a5eb6474e35277f7b25e98ef53d35fd5da542e0dddf5a93\n//token: 1111\n",
+			"headerData": [
+				{
+					"key": "token",
+					"value": "7ec5c4b6ffd6951d5a5eb6474e35277f7b25e98ef53d35fd5da542e0dddf5a93",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "1111",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "http://127.0.0.1:8090/api/checkToken?uniqueId=uniqueid1&uniqueRef=uniqueRef1",
+			"folder": "748f8a2e-c61a-2d29-459e-16080b5f48ee",
+			"queryParams": [
+				{
+					"key": "uniqueId",
+					"value": "uniqueid1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "uniqueRef",
+					"value": "uniqueRef1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534429686344,
+			"name": "checkToken",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": []
+		},
+		{
+			"id": "d77b5fe1-476a-5865-63af-fd8b60aa5952",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8092/api/crc32-and-filter-processor-api/v1/filter-processor",
+			"folder": "04f8549d-5c13-2d1c-ec30-144f91b42d2f",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535631312663,
+			"name": "filter-processor",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": [],
+			"rawModeData": "{\n  \"createdAt\":\"2018-08-30T13:15:00Z\"\n}"
+		},
+		{
+			"id": "d7d4fb25-506a-7243-4787-d6a2da7c9b5e",
+			"headers": "//grant_type: client_credentials\n//client_id: f4947aa7be8e4417bf87d0031ab5e25c\n//client_secret: 3A574cff594745a4a8467F333cbe8Ec0\naccess_token: MQtvW7PR_T3XCaTfrfTdYb2BYGejGJVbgnY7m0qvrbHkHjFXTcV2CxeSd4lKp1npyfszS-RBY_eZEUiYirdNRg\n",
+			"headerData": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"description": "",
+					"enabled": false
+				},
+				{
+					"key": "client_id",
+					"value": "f4947aa7be8e4417bf87d0031ab5e25c",
+					"description": "TCS1",
+					"enabled": false
+				},
+				{
+					"key": "client_secret",
+					"value": "3A574cff594745a4a8467F333cbe8Ec0",
+					"description": "TCS1",
+					"enabled": false
+				},
+				{
+					"key": "access_token",
+					"value": "MQtvW7PR_T3XCaTfrfTdYb2BYGejGJVbgnY7m0qvrbHkHjFXTcV2CxeSd4lKp1npyfszS-RBY_eZEUiYirdNRg",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8089/oauth/delete",
+			"folder": "a3f4661c-7889-0783-ab44-83ce98f63123",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1534326778145,
+			"name": "tokenDelete",
+			"description": null,
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": []
+		},
+		{
+			"id": "ee92a662-2133-4b69-5f70-07c71a04ea66",
+			"headers": "",
+			"headerData": [],
+			"url": "http://127.0.0.1:8085/api/get-token?uniqueId=uniqueid1&uniqueRef=uniqueRef1",
+			"folder": "748f8a2e-c61a-2d29-459e-16080b5f48ee",
+			"queryParams": [
+				{
+					"key": "uniqueId",
+					"value": "uniqueid1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "uniqueRef",
+					"value": "uniqueRef1",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1533411628540,
+			"name": "getToken using sha",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": []
+		},
+		{
+			"id": "f36a915f-97d3-ab7c-f853-6dac8704b87a",
+			"headers": "//cr32Token: KajqwgHrpaAzwHjz\n//cr32Token: AAA\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "cr32Token",
+					"value": "KajqwgHrpaAzwHjz",
+					"description": "Good",
+					"enabled": false
+				},
+				{
+					"key": "cr32Token",
+					"value": "AAA",
+					"description": "Bad",
+					"enabled": false
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://127.0.0.1:8092/api/crc32-and-filter-processor-api/v1/crc32-processor",
+			"folder": "4fce9ff7-7d6d-fd43-cf88-bc57e7f8f257",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1535619562790,
+			"name": "crc32-processor",
+			"description": "",
+			"collectionId": "44f7b0f8-1f45-c394-6e07-8abaf05c4dcb",
+			"responses": [],
+			"rawModeData": "{\n  \"createdAt\":\"2018-08-16T16:25:53Z\"\n}"
+		}
+	]
+}

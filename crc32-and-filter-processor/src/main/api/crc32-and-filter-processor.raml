@@ -1,0 +1,62 @@
+#%RAML 1.0
+title: crc32 and filter processor API
+version: 1.0
+description: crc32 and filter processor API  
+baseUri: https://mocksvc.mulesoft.com/mocks/d13c8106-6725-4e29-bae8-66b5c44f1a67/api
+
+protocols: [HTTP,HTTPS]
+mediaType: application/json
+
+/crc32-processor:
+      displayName: crc32-processor
+
+      post:            
+        description: Checks whether payload has been changed
+        body:
+          application/json:
+            example: |
+                {
+                  "createdAt":"2018-08-16T16:25:53Z"
+                }          
+        responses:
+              200:
+                body:
+                  application/json:
+                    example: |
+                      {
+                          "createdAt": "2018-08-16T16:25:53Z",
+                          "changeStatus": "no change"
+                      }
+/crc32-payload-change:
+      displayName: crc32-payload-change
+
+      post:            
+        description: Checks whether payload has been changed
+        body:
+          application/json:
+            example: |
+                {
+                  "createdAt":"2018-08-16T16:25:53Z"
+                }          
+        responses:
+              200:   
+/filter-processor:
+      displayName: filter-processor
+
+      post:            
+        description: Checks time of the message sent, if the message passes the expiry time, it discards the message
+        body:
+          application/json:
+            example: |
+                {
+                  "createdAt":"2018-08-16T16:25:53Z"
+                }          
+        responses:
+              200:
+                body:
+                  application/json:
+                    example: |
+                      {
+                          "createdAt": "2018-08-16T16:25:53Z",
+                          "changeStatus": "no change"
+                      }                           

@@ -16,12 +16,11 @@
                 <extensions>true</extensions>
                 <configuration>
                     <!-- if MULE_HOME variable is configured then the domain will be copy to domains directory of your mule installation -->
-                    <copyToDomainsDirectory>true</copyToDomainsDirectory>
+                    <copyToDomainsDirectory>true</copyToDomainsDirectory>                    		
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
     <pluginRepositories>
         <pluginRepository>
             <id>mulesoft-release</id>

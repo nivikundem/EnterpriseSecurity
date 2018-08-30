@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:crc32="http://www.mulesoft.org/schema/mule/crc32" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/crc32 http://www.mulesoft.org/schema/mule/crc32/current/mule-crc32.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+    
+    <sub-flow name="crc32-payload-change-sub-flow">    
+        
+        <crc32:calculate config-ref="CRC32" input-ref="#[message.payloadAs(java.lang.String)]" doc:name="CRC32 Calculate"/> 
+        
+       
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+        <set-payload value="{
+    &quot;createdAt&quot;: &quot;2018-08-16T16:25:53Z&quot;,
+    &quot;changeStatus&quot;:  &quot;changed&quot;
+}" doc:name="Set Payload"/>
+    
+        <crc32:filter config-ref="CRC32" expectedChecksum="#[flowVars.crc32]" doc:name="CRC32 Filter" />
+        
+    </sub-flow>
+</mule>

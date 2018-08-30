@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    <flow name="crc32-and-filter-processor-main">
+        <http:listener config-ref="crc32-api-http-lc-8092" path="${api.http.listener.path}" doc:name="HTTP" />
+        <apikit:router config-ref="crc32-and-filter-processor-config" doc:name="APIkit Router" />
+        <exception-strategy ref="crc32-and-filter-processor-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy" />
+    </flow>
+    <flow name="crc32-and-filter-processor-console">
+        <http:listener config-ref="crc32-api-http-lc-8092" path="/console/*" doc:name="HTTP" />
+        <apikit:console config-ref="crc32-and-filter-processor-config" doc:name="APIkit Console" />
+    </flow>
+    <flow name="post:/crc32-processor:crc32-and-filter-processor-config">
+        <flow-ref name="crc32-processor-sub-flow" doc:name="crc32-processor-sub-flow" />
+        <!--  <set-payload value="{&#xA;  &quot;createdAt&quot;:&quot;2018-08-16T16:25:53Z&quot;&#xA;}" doc:name="Set Payload"/> -->
+    </flow>
+    <flow name="post:/crc32-payload-change:crc32-and-filter-processor-config">
+        <flow-ref name="crc32-payload-change-sub-flow" doc:name="crc32-payload-change-sub-flow"/>
+        <set-payload value="#[NullPayload.getInstance()]" doc:name="Set Payload"/>
+    </flow>
+    <flow name="post:/filter-processor:crc32-and-filter-processor-config">
+        <flow-ref name="filters-processor-sub-flow" doc:name="filters-processor-sub-flow"/>
+        <set-payload value="{&#xA;    &quot;createdAt&quot;: &quot;2018-08-16T16:25:53Z&quot;,&#xA;    &quot;changeStatus&quot;: &quot;no change&quot;&#xA;}" doc:name="Set Payload"/>
+    </flow>
+</mule>
